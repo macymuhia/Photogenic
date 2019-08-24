@@ -22,5 +22,10 @@ class Image(models.Model):
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     category = models.ManyToManyField(Category)
 
+    @classmethod
+    def all_images(cls):
+        pics = cls.objects.all()
+        return pics
+
     def __str__(self):
         return self.image_name
