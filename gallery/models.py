@@ -4,9 +4,15 @@ from django.db import models
 class Location(models.Model):
     place = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.place
+
 
 class Category(models.Model):
     cat = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.cat
 
 
 class Image(models.Model):
@@ -15,3 +21,6 @@ class Image(models.Model):
     image_description = models.CharField(max_length=30)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     category = models.ManyToManyField(Category)
+
+    def __str__(self):
+        return self.image_name
