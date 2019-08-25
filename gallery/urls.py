@@ -6,6 +6,11 @@ from . import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("gallery/", views.gallery, name="gallery"),
+    re_path(
+        r"^gallery/category/(?P<category_id>\d+)/$",
+        views.gallery_category,
+        name="gallery_category",
+    ),
 ]
 
 if settings.DEBUG:

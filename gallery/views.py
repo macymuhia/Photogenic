@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import request
-from .models import Image
+from .models import Image, Category
 
 # Create your views here.
 def index(request):
@@ -8,6 +8,11 @@ def index(request):
 
 
 def gallery(request):
-    pics = Image.all_images()
-    return render(request, "gallery.html", {"pics": pics})
+    all_cats = Category.get_all()
+    return render(request, "gallery.html", {"all_cats": all_cats})
+
+
+def gallery_category(request, category_id):
+    pics = Image.fetch_images_in_category(category_id)
+    return render(request, "category.html", {"pics": pics})
 
