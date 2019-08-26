@@ -20,10 +20,32 @@ def gallery_category(request, category_id):
     return render(request, "category.html", {"pics": pics})
 
 
+def search_category(request):
+    search_term = request.GET.get("category")
+    pics = Image.search_by_category(search_term)
+    return render(request, "search.html", {"pics": pics})
+
+
 def pic_location(request, location_id):
     if location_id == 00:
         pics = Image.all_images()
     else:
         pics = Image.filter_by_location(location_id)
     return render(request, "location.html", {"pics": pics})
+
+
+# def search_results(request):
+
+#     if "category" in request.GET and request.GET["category"]:
+#         search_term = request.GET.get("category")
+#         searched_categories = Image.search_by_category(search_term)
+#         message = f"{search_term}"
+
+#         return render(
+#             request, "search.html", {"message": message, "pics": searched_categories}
+#         )
+
+#     else:
+#         message = "You haven't searched for any category"
+#         return render(request, "category.html", {"message": message})
 

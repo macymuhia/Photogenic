@@ -16,6 +16,7 @@ urlpatterns = [
         views.pic_location,
         name="pic_location",
     ),
+    path("search/", views.search_category, name="search_results"),
 ]
 
 if settings.DEBUG:
