@@ -1,3 +1,7 @@
 h1 {
     color: green;
 }
+
+body {
+    background-image: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+}
