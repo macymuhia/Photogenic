@@ -4,6 +4,10 @@ from django.db import models
 class Location(models.Model):
     place = models.CharField(max_length=30)
 
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
+
     def __str__(self):
         return self.place
 
@@ -48,6 +52,10 @@ class Image(models.Model):
     @classmethod
     def fetch_images_in_category(cls, category_id):
         return cls.objects.filter(category__id=category_id)
+
+    @classmethod
+    def filter_by_location(cls, location_id):
+        return cls.objects.filter(location=location_id)
 
     def __str__(self):
         return self.image_name

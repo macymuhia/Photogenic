@@ -2,7 +2,12 @@
 <!-- content -->
 {% block content %} {{block.super}}
 <h1 class="text-center">Panorama Gallery</h1>
-{% for cat in all_cats %}
+
+<select id="location_select" name="Location">
+    {% for loc in all_locations %}
+    <option value="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</option>
+    {% endfor %}
+</select> {% for cat in all_cats %}
 
 <div class="row">
     <!-- displaying Images-->

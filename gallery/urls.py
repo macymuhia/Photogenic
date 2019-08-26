@@ -11,6 +11,11 @@ urlpatterns = [
         views.gallery_category,
         name="gallery_category",
     ),
+    re_path(
+        r"^gallery/location/(?P<location_id>\d+)/$",
+        views.pic_location,
+        name="pic_location",
+    ),
 ]
 
 if settings.DEBUG:
