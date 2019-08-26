@@ -2,13 +2,19 @@
 <!-- content -->
 {% block content %} {{block.super}}
 <h1 class="text-center">Panorama Gallery</h1>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Locations
+                <span class="caret"></span></button>
+    <ul class="dropdown-menu">
 
-<select id="location_select" name="Location">
-        <option value="{% url 'pic_location' location_id=00 %}">All Locations</option>
-    {% for loc in all_locations %}
-    <option value="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</option>
-    {% endfor %}
-</select> {% for cat in all_cats %}
+        <!-- <li><a href="{% url 'pic_location' location_id=00 %}">All Locations</a></li> -->
+        {% for loc in all_locations %}
+        <li><a href="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% for cat in all_cats %}
 
 <div class="row">
     <!-- displaying Images-->

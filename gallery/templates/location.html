@@ -1,7 +1,18 @@
 {% extends 'base.html'%}
 <!-- content -->
 {% block content %} {{block.super}}
-<h1 class="text-center"> {{category}} </h1>
+<h1 class="text-center"> {{location}} </h1>
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Locations
+                <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+
+        <!-- <li><a href="{% url 'pic_location' location_id=00 %}">All Locations</a></li> -->
+        {% for loc in all_locations %}
+        <li><a href="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 {% for pic in pics %}
 
 <div class="row">
