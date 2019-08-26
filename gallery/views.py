@@ -21,6 +21,9 @@ def gallery_category(request, category_id):
 
 
 def pic_location(request, location_id):
-    pics = Image.filter_by_location(location_id)
+    if location_id == 00:
+        pics = Image.all_images()
+    else:
+        pics = Image.filter_by_location(location_id)
     return render(request, "location.html", {"pics": pics})
 

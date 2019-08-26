@@ -4,6 +4,7 @@
 <h1 class="text-center">Panorama Gallery</h1>
 
 <select id="location_select" name="Location">
+        <option value="{% url 'pic_location' location_id=00 %}">All Locations</option>
     {% for loc in all_locations %}
     <option value="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</option>
     {% endfor %}
