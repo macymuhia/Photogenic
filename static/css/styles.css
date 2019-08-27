@@ -1,6 +1,6 @@
-* {
+/* * {
     border: 1px solid red;
-}
+} */
 
 h1 {
     color: whitesmoke;
@@ -22,4 +22,8 @@ body {
 
 .col-md-4 img {
     height: 250px
+}
+
+.dropdown {
+    margin-bottom: 5px;
 }
