@@ -8,7 +8,7 @@ h1 {
 }
 
 body {
-    background-image: linear-gradient(to right, grey, whitesmoke, grey, whitesmoke);
+    background-image: linear-gradient(to right, #ffb6c1, #c0809c, #ffb6c1, #c0809c);
 }
 
 .card {
