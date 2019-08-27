@@ -3,12 +3,12 @@
 } */
 
 h1 {
-    color: whitesmoke;
+    color: black;
     margin: 0px;
 }
 
 body {
-    background-image: linear-gradient(to right, black, gray, black, gray);
+    background-image: linear-gradient(to right, grey, whitesmoke, grey, whitesmoke);
 }
 
 .card {
@@ -18,6 +18,10 @@ body {
 
 .card h1 {
     line-height: 5rem;
+}
+
+.card p {
+    color: black;
 }
 
 .col-md-4 img {
