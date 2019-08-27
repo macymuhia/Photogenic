@@ -41,3 +41,17 @@ body {
 .dropdown {
     margin-bottom: 5px;
 }
+
+.modal-body .img-rounded {
+    width: 898px;
+    height: 500px;
+}
+
+.modal-body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.modal-footer {
+    text-align: center;
+}

@@ -6,10 +6,32 @@
     {% for pic in pics %}
     <!-- displaying Images-->
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <img src="{{ pic.image.url }}" class="img-responsive img-rounded" alt="Image">
+        <a href="#{{pic.id}}" data-toggle="modal"><img src="{{ pic.image.url }}" class="img-responsive img-rounded" alt="Image"></a>
+
+    </div>
+    <div id="{{pic.id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"> {{ pic.image_name }} </h4>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ pic.image.url }}" class="img-rounded" alt="Image">
+                </div>
+                <div class="modal-footer">
+                    <p> {{ pic.image_description }} </p>
+                </div>
+            </div>
+
+        </div>
     </div>
     {% empty %}
+
 </div>
+
 <div class="row">
     <h2 class="text-center">There No Images</h2>
 </div>
