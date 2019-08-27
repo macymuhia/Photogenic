@@ -1,7 +1,6 @@
 {% extends 'base.html'%}
 <!-- content -->
 {% block content %} {{block.super}}
-<h1 class="text-center">Panorama Gallery</h1>
 <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">All Locations
                 <span class="caret"></span></button>
@@ -13,22 +12,26 @@
         {% endfor %}
     </ul>
 </div>
+<!-- <h1 class="text-center">Panorama Gallery</h1> -->
 
-{% for cat in all_cats %}
 
 <div class="row">
+    {% for cat in all_cats %}
+
     <!-- displaying Images-->
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-        <h2 class="text-center"> {{ cat.name }} </h2>
-    </div>
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-        <a href="{% url 'gallery_category' category_id=cat.id %}"><img src="{{ cat.cat_image.url }}" class="img-responsive" alt="Image"></a>
-        <p> {{ cat.cat_description }} </p>
+    <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <h2 class="text-center"> {{ cat.name }} </h2>
+        </div> -->
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div>
+            <a href="{% url 'gallery_category' category_id=cat.id %}"><img src="{{ cat.cat_image.url }}" class="img-responsive img-rounded" alt="Image"></a>
+        </div>
+        <!-- <p> {{ cat.cat_description }} </p> -->
     </div>
 
+
+    {% empty %}
 </div>
-
-{% empty %}
 <div class="row">
     <h2 class="text-center">There No Images</h2>
 </div>
