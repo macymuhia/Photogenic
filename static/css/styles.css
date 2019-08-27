@@ -34,7 +34,8 @@ body {
 }
 
 .col-md-4 img {
-    height: 250px
+    height: 220px;
+    margin-bottom: 10px;
 }
 
 .dropdown {
