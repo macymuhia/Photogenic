@@ -17,8 +17,9 @@ def gallery(request):
 
 def gallery_category(request, category_id):
     pics = Image.fetch_images_in_category(category_id)
+    icon = Image.icon
     # cat_name = pics.category_id.name
-    return render(request, "category.html", {"pics": pics})
+    return render(request, "category.html", {"pics": pics, "icon": icon})
 
 
 # def search_category(request):
@@ -31,6 +32,7 @@ def gallery_category(request, category_id):
 
 def pic_location(request, location_id):
     all_locations = Location.get_all()
+
     if location_id == 00:
         pics = Image.all_images()
     else:

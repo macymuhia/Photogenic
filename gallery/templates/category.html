@@ -22,7 +22,14 @@
                     <img src="{{ pic.image.url }}" class="img-rounded" alt="Image">
                 </div>
                 <div class="modal-footer">
-                    <p> {{ pic.image_description }} </p>
+                    <div class="row">
+                        <div class='col-md-11'>
+                            <p> {{ pic.image_description }} </p>
+                        </div>
+                        <div class="col-md-1">
+                            <i class="fa fa-link">&nbsp;<em>copy</em></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 

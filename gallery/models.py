@@ -1,6 +1,7 @@
 from django.db import models
 import urllib, os
 from urllib.parse import urlparse
+from fontawesome.fields import IconField
 
 # Create your models here.
 class Location(models.Model):
@@ -38,6 +39,7 @@ class Image(models.Model):
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     category = models.ManyToManyField(Category)
     created_on = models.DateTimeField(auto_now_add=True)
+    icon = IconField()
 
     class Meta:
         ordering = ["-created_on"]
