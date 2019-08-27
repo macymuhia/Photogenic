@@ -16,12 +16,21 @@ body {
     font-size: 24px;
 }
 
+.btn-primary {
+    background-color: black;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: gray;
+}
+
 .card h1 {
     line-height: 5rem;
 }
 
 .card p {
-    color: black;
+    color: rgba(0, 0, 0, 0.911);
 }
 
 .col-md-4 img {
