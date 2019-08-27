@@ -22,16 +22,21 @@ def gallery_category(request, category_id):
 
 def search_category(request):
     search_term = request.GET.get("category")
+    print(search_term)
     pics = Image.search_by_category(search_term)
+    print(pics)
     return render(request, "search.html", {"pics": pics})
 
 
 def pic_location(request, location_id):
+    all_locations = Location.get_all()
     if location_id == 00:
         pics = Image.all_images()
     else:
         pics = Image.filter_by_location(location_id)
-    return render(request, "location.html", {"pics": pics})
+    return render(
+        request, "location.html", {"pics": pics, "all_locations": all_locations}
+    )
 
 
 # def search_results(request):

@@ -1,4 +1,6 @@
 from django.db import models
+import urllib, os
+from urllib.parse import urlparse
 
 # Create your models here.
 class Location(models.Model):
@@ -31,6 +33,7 @@ class Category(models.Model):
 class Image(models.Model):
     image = models.ImageField(upload_to="gallery/")
     image_name = models.CharField(max_length=10)
+    image_url = models.URLField(null=True, blank=True)
     image_description = models.CharField(max_length=30)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
     category = models.ManyToManyField(Category)
@@ -59,7 +62,30 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls, search_term):
-        return cls.objects.filter(title__icontains=search_term)
+        return cls.objects.filter(category__name__icontains=search_term)
+
+    @classmethod
+    def save_image(cls, *args, **kwargs):
+        if cls.image_url:
+            file_save_dir = cls.upload_path
+            filename = urlparse(cls.image_url).path.split("/")[-1]
+            urllib.urlretrieve(cls.image_url, os.path.join(file_save_dir, filename))
+            cls.image = os.path.join(file_save_dir, filename)
+            cls.image_url = ""
+        super(Image, cls).save()
+
+    def delete(self, *args, **kwargs):
+        if os.path.isfile(self.image_url.path):
+            os.remove(self.image_url.path)
+        super(Image, self).delete(*args, **kwargs)
+
+    @classmethod
+    def get_image_by_id(cls, id):
+        return cls.objects.filter(id=id)
+
+    @classmethod
+    def search_image(cls, category):
+        return cls.objects.filter(category__name__icontains=category)
 
     def __str__(self):
         return self.image_name
