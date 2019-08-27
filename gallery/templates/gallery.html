@@ -8,7 +8,9 @@
 
         <!-- <li><a href="{% url 'pic_location' location_id=00 %}">All Locations</a></li> -->
         {% for loc in all_locations %}
-        <li><a href="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</a></li>
+        <li>
+            <a href="{% url 'pic_location' location_id=loc.id %}">{{ loc.place }}</a>
+        </li>
         {% endfor %}
     </ul>
 </div>
@@ -24,7 +26,8 @@
         </div> -->
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <div>
-            <a href="{% url 'gallery_category' category_id=cat.id %}"><img src="{{ cat.cat_image.url }}" class="img-responsive img-rounded" alt="Image"></a>
+            <a href="{% url 'gallery_category' category_id=cat.id %}">
+                <img src="{{ cat.cat_image.url }}" class="img-responsive img-rounded" alt="Image"></a>
         </div>
         <!-- <p> {{ cat.cat_description }} </p> -->
     </div>
