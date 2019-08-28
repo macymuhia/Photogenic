@@ -36,7 +36,7 @@
             $('.js-copybtn').on('click', function() {
                 var $temp = $(".js-piclink").attr("href");
                 alert($temp)
-                return execCommand("copy");
+                document.execCommand('copy');
 
                 // Select the email link anchor text  
                 // var picLink = document.querySelector('.js-piclink');
