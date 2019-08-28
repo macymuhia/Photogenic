@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 <!-- content -->
 {% block content %} {{block.super}}
-<h1 class="text-center"> </h1>
+<!-- <h1 class="text-center"> {{ cat_name }} </h1> -->
 <div class="row">
     {% for pic in pics %}
     <!-- displaying Images-->
@@ -25,9 +25,16 @@
                     <div class="row">
                         <div class='col-md-11'>
                             <p> {{ pic.image_description }} </p>
+
                         </div>
                         <div class="col-md-1">
-                            <i class="fa fa-link">&nbsp;<em>copy</em></i>
+                            <a class="js-piclink" href=" {{ pic.image.url }} "></a>
+                            <div class="js-copybtn">
+                                <!-- <div class="fa fa-link">
+                                    <input type="button" class="btn btn-default" value="{{ pic.image.url }}" name="copy">
+                                </div> -->
+                                <i class="fa fa-link">&nbsp;<em>copy</em></i>
+                            </div>
                         </div>
                     </div>
                 </div>

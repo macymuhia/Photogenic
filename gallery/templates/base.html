@@ -32,6 +32,28 @@
                 }
                 return false;
             });
+
+            $('.js-copybtn').on('click', function() {
+                var $temp = $(".js-piclink").attr("href");
+                alert($temp)
+                document.execCommand("copy");
+
+                // Select the email link anchor text  
+                // var picLink = document.querySelector('.js-piclink');
+                // var range = document.createRange();
+                // range.selectNode(picLink);
+                // window.getSelection().addRange(range);
+
+                // try {
+                //     // Now that we've selected the anchor text, execute the copy command  
+                //     var successful = document.execCommand('copy');
+                //     var msg = successful ? 'successful' : 'unsuccessful';
+                //     console.log('Copy email command was ' + msg);
+                // } catch (err) {
+                //     console.log('Oops, unable to copy');
+                // }
+                // window.getSelection().removeAllRanges();
+            });
         });
     </script>
     {% bootstrap_javascript %} {% endblock %}
