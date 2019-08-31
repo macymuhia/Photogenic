@@ -1,0 +1,67 @@
+/* * {
+    border: 1px solid red;
+} */
+
+h1 {
+    color: black;
+    margin: 0px;
+}
+
+body {
+    background-image: linear-gradient(to right, #c0809ccb, #c0809cb9);
+}
+
+.card {
+    line-height: 20rem;
+    font-size: 24px;
+}
+
+.btn-primary {
+    background-color: black;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: gray;
+}
+
+.card h1 {
+    line-height: 5rem;
+}
+
+.card p {
+    color: rgba(0, 0, 0, 0.911);
+}
+
+.col-md-4 img {
+    height: 220px;
+    margin-bottom: 10px;
+}
+
+.dropdown {
+    margin-bottom: 5px;
+}
+
+.modal-body .img-rounded {
+    width: 898px;
+    height: 500px;
+}
+
+.modal-body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.fa-link {
+    color: rgb(37, 37, 212);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn-default {
+    border: none;
+}

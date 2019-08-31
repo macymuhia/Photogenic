@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import request
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from .models import Image, Category, Location
+from .forms import SignUpForm
 
 # import pyperclip
 
@@ -25,14 +28,6 @@ def gallery_category(request, category_id):
     return render(
         request, "category.html", {"pics": pics, "icon": icon, "cat_name": cat_name}
     )
-
-
-# def search_category(request):
-#     search_term = request.GET.get("category")
-#     print(search_term)
-#     pics = Image.search_by_category(search_term)
-#     print(pics)
-#     return render(request, "search.html", {"pics": pics})
 
 
 def pic_location(request, location_id):
@@ -64,4 +59,19 @@ def search_category(request):
     else:
         message = "You haven't searched for any category"
         return render(request, "category.html", {"message": message})
+
+
+def signup(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("gallery")
+    else:
+        form = SignUpForm()
+    return render(request, "signup.html", {"form": form})
 

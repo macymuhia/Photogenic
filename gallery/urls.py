@@ -17,6 +17,7 @@ urlpatterns = [
         name="pic_location",
     ),
     path("search/", views.search_category, name="search_results"),
+    path("signup", views.signup, name="signup"),
 ]
 
 if settings.DEBUG:
