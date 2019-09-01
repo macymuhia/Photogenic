@@ -106,8 +106,8 @@ def signup(request):
 
             msg = EmailMultiAlternatives(subject, text_content, sender, [user.email])
             msg.attach_alternative(html_content, "text/html")
-            res = msg.send()
-            print(res)
+            msg.send()
+            # print(res)
             # send_welcome_email(user.username, user.email)
             return redirect("account_activation_sent")
     else:
@@ -131,6 +131,16 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
+        subject = "Welcome to Photopedia"
+        sender = "atst.acc19@gmail.com"
+
+        # passing in the context vairables
+        text_content = render_to_string("welcome_email.txt", {"user": user})
+        html_content = render_to_string("welcome_email.html", {"user": user})
+
+        msg = EmailMultiAlternatives(subject, text_content, sender, [user.email])
+        msg.attach_alternative(html_content, "text/html")
+        msg.send()
 
         return redirect("gallery")
     else:
