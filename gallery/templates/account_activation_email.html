@@ -1,0 +1,11 @@
+{% autoescape off %}
+<!-- message -->
+<h2>
+    Hi {{ user.username }},
+</h2>
+<p>
+    Please click on the link below to confirm your registration:
+</p>
+<a target="_blank" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Activation link</a>
+<!-- endmessage -->
+{% endautoescape %}
