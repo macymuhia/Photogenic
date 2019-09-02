@@ -146,3 +146,8 @@ def activate(request, uidb64, token):
     else:
         return render(request, "account_activation_invalid.html")
 
+
+def get_user_profile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, "user_profile.html", {"user": user})
+

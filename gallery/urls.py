@@ -28,6 +28,7 @@ urlpatterns = [
         views.activate,
         name="activate",
     ),
+    re_path(r"profile/(?P<username>[a-zA-Z0-9]+)$", views.get_user_profile),
 ]
 
 if settings.DEBUG:
