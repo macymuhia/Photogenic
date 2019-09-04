@@ -22,6 +22,7 @@ def index(request):
     return redirect("signup")
 
 
+@login_required
 def gallery(request):
     all_cats = Category.get_all()
     all_locations = Location.get_all()
@@ -30,6 +31,7 @@ def gallery(request):
     )
 
 
+@login_required
 def gallery_category(request, category_id):
     pics = Image.fetch_images_in_category(category_id)
     icon = Image.icon
@@ -40,6 +42,7 @@ def gallery_category(request, category_id):
     )
 
 
+@login_required
 def pic_location(request, location_id):
     all_locations = Location.get_all()
     loc_name = Image.location
@@ -55,6 +58,7 @@ def pic_location(request, location_id):
     )
 
 
+@login_required
 def search_category(request):
 
     if "category" in request.GET and request.GET["category"]:
@@ -155,11 +159,12 @@ def activate(request, uidb64, token):
         msg.attach_alternative(html_content, "text/html")
         msg.send()
 
-        return redirect("gallery")
+        return redirect("edit_profile")
     else:
         return render(request, "account_activation_invalid.html")
 
 
+@login_required
 def get_user_profile(request, username):
     user = User.objects.get(username=username)
     return render(request, "user_profile.html", {"user": user})
