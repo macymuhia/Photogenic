@@ -5,7 +5,9 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("gallery/", views.gallery, name="gallery"),
+    path("signup", views.signup, name="signup"),
+    # path("signin", views.signin, name="signin"),
+    path("accounts/login/gallery/", views.gallery, name="gallery"),
     re_path(
         r"^gallery/category/(?P<category_id>\d+)/$",
         views.gallery_category,
@@ -17,7 +19,6 @@ urlpatterns = [
         name="pic_location",
     ),
     path("search/", views.search_category, name="search_results"),
-    path("signup", views.signup, name="signup"),
     path(
         "account_activation_sent/",
         views.account_activation_sent,
@@ -28,7 +29,10 @@ urlpatterns = [
         views.activate,
         name="activate",
     ),
-    re_path(r"profile/(?P<username>[a-zA-Z0-9]+)$", views.get_user_profile),
+    re_path(
+        r"profile/(?P<username>[a-zA-Z0-9]+)$", views.get_user_profile, name="profile"
+    ),
+    path("profile/edit_profile/", views.edit_profile, name="edit_profile"),
 ]
 
 if settings.DEBUG:

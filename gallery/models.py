@@ -7,6 +7,30 @@ from urllib.parse import urlparse
 from fontawesome.fields import IconField
 
 # Create your models here.
+class UserProfileManager(models.Manager):
+    pass
+
+
+class UserProfile(models.Model):
+    # user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    description = models.CharField(max_length=100, default="")
+    city = models.CharField(max_length=100, default="")
+    website = models.URLField(default="")
+    phoneNumber = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="profile_image", blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+def createProfile(sender, **kwargs):
+    if kwargs["created"]:
+        user_profile = UserProfile.objects.created(user=kwargs["instance"])
+
+        post_save.connect(createProfile, sender=User)
+
+
 # class Profile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     profile_pic = models.ImageField(upload_to="gallery/" default='')
