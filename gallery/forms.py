@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import UserProfile
+from .models import Profile
 
 
 class SignUpForm(UserCreationForm):
@@ -38,6 +38,5 @@ class EditProfileForm(ModelForm):
 
 class ProfileForm(ModelForm):
     class Meta:
-        model = UserProfile
-        fields = ("city", "description", "phoneNumber", "website", "image")
-
+        model = Profile
+        fields = ("profile_pic", "bio", "location", "birth_date")

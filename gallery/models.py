@@ -11,40 +11,40 @@ class UserProfileManager(models.Manager):
     pass
 
 
-class UserProfile(models.Model):
-    # user = models.OneToOneField(User)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    description = models.CharField(max_length=100, default="")
-    city = models.CharField(max_length=100, default="")
-    website = models.URLField(default="")
-    phoneNumber = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="profile_image", blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-
-def createProfile(sender, **kwargs):
-    if kwargs["created"]:
-        user_profile = UserProfile.objects.created(user=kwargs["instance"])
-
-        post_save.connect(createProfile, sender=User)
-
-
-# class Profile(models.Model):
+# class UserProfile(models.Model):
+#     # user = models.OneToOneField(User)
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     profile_pic = models.ImageField(upload_to="gallery/" default='')
-#     email_confirmed = models.BooleanField(default=False)
-#     bio = models.TextField(max_length=500, blank=True)
-#     location = models.CharField(max_length=30, blank=True)
-#     birth_date = models.DateField(null=True, blank=True)
+#     description = models.CharField(max_length=100, default="")
+#     city = models.CharField(max_length=100, default="")
+#     website = models.URLField(default="")
+#     phoneNumber = models.IntegerField(default=0)
+#     image = models.ImageField(upload_to="profile_image", blank=True)
+
+#     def __str__(self):
+#         return self.user.username
 
 
-# @receiver(post_save, sender=User)
-# def update_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-#     instance.profile.save()
+# def createProfile(sender, **kwargs):
+#     if kwargs["created"]:
+#         user_profile = UserProfile.objects.created(user=kwargs["instance"])
+
+#         post_save.connect(createProfile, sender=User)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(upload_to="gallery/")
+    email_confirmed = models.BooleanField(default=False)
+    bio = models.TextField(max_length=500, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
 
 
 class Location(models.Model):
