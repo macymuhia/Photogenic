@@ -1,12 +1,15 @@
-# PANORAMA
+# PHOTOPEDIA
 ## Description
-Panorama is a personal gallery application that displays my photos for others to see. The photos are in categories and one can view photos of a selected location.
+Photopedia is an application that displays a users photos for others to see. The photos are in categories and one can view photos of a selected location. To view or add photos, a user should sign up, activate their email to sign in.
 
 Last modified 27th August 2019.
 #### By **Mercy Muhia**
 
 ## Project behaviour
 
+- A user can sign up
+- A user will receive an email with an activation link
+- A user user will be logged in on clicking the activation link
 - A user can see my photo categories
 - A user can click on a photo to see other photos in that category
 - A user can search for photos by category
@@ -14,9 +17,9 @@ Last modified 27th August 2019.
 
  
 ## Setup/Installation Requirements
-```Git clone https://github.com/macymuhia/Panorama.git```
+```Git clone https://github.com/macymuhia/Photogenic.git```
 
-```cd Panorama```
+```cd Photogenic```
 
 ```python3.6 -m venv --without-pip .venv```
 
