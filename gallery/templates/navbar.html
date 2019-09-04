@@ -13,9 +13,7 @@
 
                 {% if user.is_authenticated %}
                 <li class="active"><a href="{% url 'gallery' %}">Gallery</a></li>
-                <!-- <li>
-                    <a href="{% url 'profile' %}"> {{user.username}} </a>
-                </li> -->
+
                 <li>
                     <a href="{% url 'login' %}">Logout</a>
                 </li>
