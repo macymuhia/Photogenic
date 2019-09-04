@@ -2,7 +2,7 @@
 ## Description
 Photopedia is an application that displays a users photos for others to see. The photos are in categories and one can view photos of a selected location. To view or add photos, a user should sign up, activate their email to sign in.
 
-Last modified 27th August 2019.
+Last modified 3rd September 2019.
 #### By **Mercy Muhia**
 
 ## Project behaviour
